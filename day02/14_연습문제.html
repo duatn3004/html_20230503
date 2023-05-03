@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 연습문제</title>
+    <style>
+        #div1{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 50px;
+            color: green;
+        }
+        #div1:hover{
+            color: green;
+            background-color: chartreuse;
+        }
+        .div2{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+        }
+        a{
+            text-decoration: none;
+            font-size: 20px;
+            color: white;
+        }
+        #div3{
+            background-color: skyblue;
+            font-size: 50px;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+        }
+        li{
+            font-size: 30px;
+        }
+        li:nth-child(even){
+            color: red;
+        }
+        li:nth-child(odd){
+            color: green;
+        }
+        li::after{
+            content: "번째";
+        }
+        li::before{
+            content: "li 태그";
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        div 3개를 만들어 
+        naver google daum 사이트로 연결되게 하고
+        naver는 초록색, google, daum의 글자색과 모양을 달리 스타일을 주기
+        a:active(클릭할때 색) a: visited(링크를 눌러본 후)
+        
+    -->
+    <div>
+        <a id="div1" href="https://www.naver.com/" style="text-decoration: none;">naver</a>
+    </div>
+    <div class="div2"><a href="https://www.google.com/">google</a></div>
+    <div id="div3"><a href="http://www.daum.net/">daum</a></div>
+<!-- 
+    전체 글자크기
+    짝수 : 빨간색
+    3,6,9 : 초록색
+    1,10 : 굵게 설정
+ -->
+    <ul>
+        <li><b>1</b></li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li><b>10</b></li>
+    </ul>
+</body>
+</html>

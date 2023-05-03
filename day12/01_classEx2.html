@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>생성자 함수</title>
+</head>
+
+<body>
+    <h1>
+        클래스, 리터럴 객체, 생성자 함수를 통해 객체 생성
+    </h1>
+    <!-- 
+        클래스 생성의 기본 문법
+        class MyClass {
+            //생성자
+            constructor(param){
+                ...
+            }
+            //메서드 정의
+            method01(){...}
+            method02(){...}
+            method03(){...}
+
+            //getter / setter
+            get name(){
+                return this.name;
+            }
+            set name(value){
+                if(value.length < 4){
+                    alert('길이가 4글자 이상이여야 합니다.');
+                    return;
+                }
+                this.name = value;
+            }
+        }
+
+        //클래스 사용
+        let user = New MyClass(param);
+     -->
+
+    <!-- 
+        생성자 함수는 클래스의 함수화 
+        일반 함수와 생성자 함수는 기술적인 차이는 없음
+        1. 반드시 new를 통해 실행
+        2. 함수 첫글자는 대문자로
+
+        function User(name){
+            this.name = name;
+            this.age = 0;
+            this.print = funtion(){
+                return;
+            }
+        }
+
+        let user = new User('영이');
+        let user2 = new User('철수');
+        console.log(user.name);
+        user.age = 20;
+        console.log(user.age);
+      -->
+    <script>
+        // 클래스, 리터럴 객체, 생성자 함수
+        // 정의할 프로퍼티(멤버변수) : firstName, lastName, age, address
+        // 메서드 자바에서의 toString같은 개념의 메서드 하나만 만들기
+
+        class Jungeun {
+            constructor(firstName, lastName, age, address) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.age = age;
+                this.address = address;
+            }
+            get personInfo() {
+                return `${this.firstName},${this.lastName},${this.age},${this.address}`;
+            }
+        }
+        let jungeun = new Jungeun('홍', '길동', 20, '인천');
+        console.log(jungeun);
+        //메서드는 info(), get은 info
+        console.log(jungeun.personInfo);
+
+        function User(firstName, lastName, age, address) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+            this.address = address;
+            this.getUser = function(){
+                return `${this.firstName},${this.lastName},${this.age},${this.address}`;
+            }
+        }
+
+        //생성자 함수는 new로 객체선언
+        let s = new User('홍', '길순', 26, '서울');
+        console.log(s);
+        console.log(s.getUser());
+
+        const person = {
+            firstName : "",
+            lastName : "",
+            age : "",
+            address : "",
+            //set 함수
+            setInfo : function(first, last , age, add){
+                this.firstName = first;
+                this.lastName = last;
+                this.age = age;
+                this.address = add;
+            },
+            get personInfo(){
+                return `${this.firstName},${this.lastName},${this.age},${this.address}`;
+            },
+            set setFirstName(first){
+                this.firstName = first;
+            },
+        }
+        person.setInfo('lee','minji',25,'seoul');
+        console.log(person);
+        console.log(person.personInfo);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>과목 합계 및 평균</legend>
+            이름 : <input type="text" id="user"><br>
+            국어 : <input type="number" id="ko"><br>
+            영어 : <input type="number" id="en"><br>
+            수학 : <input type="number" id="ma"><br> 
+            <button type="button" onclick="clickst();">계산</button>
+
+        </fieldset>
+    </form>
+    <h4 id="study">
+    
+    </h4>
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
+    <script>
+        function clickst(){
+            let user = document.getElementById('user').value;
+            let ko = parseInt(document.getElementById('ko').value);
+            let en = parseInt(document.getElementById('en').value);
+            let ma = parseInt(document.getElementById('ma').value);
+            
+            // if문을 이용하여 점수가 0미만, 100이상이면 alert창을 띄워 잘못된 값이라고 안내
+            if(ko<0 || ko >100){
+                alert('0~100사이의 숫자를 입력해주세요.');
+                ko = NaN;
+                
+            }
+            if(en<0 || en >100){
+                alert('0~100사이의 숫자를 입력해주세요.');
+                en = NaN;
+                
+            }
+            if(ma<0 || ma >100){
+                alert('0~100사이의 숫자를 입력해주세요.');
+                ma = NaN;
+                
+            }
+            let sum = parseInt(ko)+parseInt(en)+parseInt(ma);
+            let avg = Math.round(sum/3); // 정수단위로 반올림
+
+            
+            if(avg>=60){
+                // if문을 활용하여 평균이 60이상이면 합격여부를 pass, 아니면 fail로 표시
+                p="pass";
+            }else{
+                p="fail";
+            }
+            
+
+            
+            let study = document.getElementById('study');
+            study.innerHTML = `<li>이름 : ${user}</li>`;
+            study.innerHTML += `<li>국어 : ${ko}</li>`;
+            study.innerHTML += `<li>영어 : ${en}</li>`;
+            study.innerHTML += `<li>수학 : ${ma}</li>`;
+            study.innerHTML += `<li>합계 : ${sum}</li>`;
+            study.innerHTML += `<li>평균 : ${avg}</li>`;
+            study.innerHTML += `<li>합격여부 : ${p}</li>`;
+
+        }
+    </script>
+</body>
+</html>

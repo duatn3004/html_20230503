@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나이구하기</title>
+</head>
+<body>
+    이름 : <input type="text" id="name"><br>
+    주민번호 : <input type="text" id="rNum"><br>
+    <button type="button" onclick="ageclick();">확인</button>
+    <h3 id="result">
+        <!-- 이름, 생년월일, 성별, 나이 -->
+    </h3>
+    <script>
+        // let a = now.getFullYear() - 2000;
+        // console.log(a);
+        function ageclick(){
+            let name = document.getElementById('name').value;
+            let rNum = document.getElementById('rNum').value; 
+            
+            let s;
+            
+            if(rNum.charAt(7) == 1 || rNum.charAt(7) == 3){
+                s="남자";
+            }else{
+                s="여자";
+            }
+            
+            let now = new Date();
+            // console.log(now.getFullYear());
+            let age = parseInt(rNum.substr(0,2));
+            // console.log(1900+age);
+            // console.log(age);
+            // let age19 = 19+age;
+            // console.log(age19);
+            // let agee= now.getFullYear()-age19;
+            // console.log(agee);
+            // let age20 = 20+age;
+            // console.log(age20);
+            let agee;
+            if(rNum.charAt(7)==1 || rNum.charAt(7)==2){
+                agee= now.getFullYear()-(1900+age);
+            }else{
+                agee= now.getFullYear()-(2000+age);
+            }
+
+            let result = document.getElementById('result');
+            result.innerText=`이름 : ${name}, 생년월일 : ${rNum.substr(0,6)}, 성별 : ${s}, 나이 : ${agee}`;
+
+        }
+    </script>
+</body>
+</html>

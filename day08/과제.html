@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제</title>
+</head>
+
+<body>
+    <h3>리스트의 구조에 따라 자바스크립트 객체를 만들어 볼 것</h3>
+    <form action="">
+        이름:<input type="text" id="name"><br>
+        거주지:<input type="text" id="home"><br>
+        좋아하는 리스트<br>
+        리스트1: <input type="text" id="list1"><br>
+        리스트2:<input type="text" id="list2"><br>
+        리스트3:<input type="text" id="list3"><br>
+        이메일:<input type="text" id="email"><br>
+        Pet 소유여부:<input type="text" id="pet"><br>
+        지금가장원하는 것:<input type="text" id="want"><br>
+        <button type="button" onclick="subprint();">객체로 전송</button>
+    </form>
+
+    <h2>전송받은 데이터 출력</h2>
+    <button type="button" onclick="print();">출력</button>
+
+    <table border="1">
+        <tr>
+            <th>이름</th>
+            <td id="name1"></td>
+        </tr>
+        <tr>
+            <th>거주지</th>
+            <td id="home1"></td>
+        </tr>
+        <tr>
+            <th>좋아하는 리스트</th>
+            <td id="like"></td>
+        </tr>
+        <tr>
+            <th>이메일</th>
+            <td id="email1"></td>
+        </tr>
+        <tr>
+            <th>Pet 소유여부</th>
+            <td id="pet1"></td>
+        </tr>
+        <tr>
+            <th>지금가장원하는 것</th>
+            <td id="want1"></td>
+        </tr>
+    </table>
+    <script>
+        const date = {
+            name: "",
+            home: "",
+            like: {
+                list1: "",
+                list2: "",
+                list3: "",
+            },
+            email: "",
+            pet: "",
+            want: "",
+        };
+
+
+        function subprint() {
+            date.name = document.getElementById('name').value;
+            date.home = document.getElementById('home').value;
+            date.email = document.getElementById('email').value;
+            date.pet = document.getElementById('pet').value;
+            date.want = document.getElementById('want').value;
+            date.like.list1 = document.getElementById('list1').value;
+            date.like.list2 = document.getElementById('list2').value;
+            date.like.list3 = document.getElementById('list3').value;
+        }
+
+        function print() {
+            document.getElementById('name1').innerText = date.name;
+            document.getElementById('home1').innerText = date.home;
+            document.getElementById('email1').innerText = date.email;
+            document.getElementById('pet1').innerText = date.pet;
+            document.getElementById('want1').innerText = date.want;
+            document.getElementById('like').innerHTML =
+                `<ul>
+                <li>${date.like.list1}</li>
+                <li>${date.like.list2}</li>
+                <li>${date.like.list3}</li>
+                </ul>`;
+
+
+
+        }
+
+    </script>
+</body>
+
+</html>

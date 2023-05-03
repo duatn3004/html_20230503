@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        숫자가 생성되면 컴퓨터가 랜덤으로 숫자를 생성하였습니다라는 안내 문구가 출력된다. 
+        input란에 1~99(포함)숫자를 입력하고 맞추기라는 버튼을 클릭하면
+        컴퓨터의 숫자보다 높은숫자이면 Down을 출력, 낮은 숫자면 up을 출력
+        컴퓨터의 숫자를 맞추면 정답입니다~ 컴퓨터 숫자는 ? 이었습니다 라는 메세지 출력
+    </pre>
+    <h1>
+        <button type="button" id="ranBtn" onclick="ran();">랜덤 숫자 생성 버튼</button>
+    </h1>
+    <h3 id="printMsg">
+
+    </h3>
+    <h1>
+        <input type="number" id="myGuess" max="99" min="0">
+        <button type="button" id="guessBtn" onclick="right();">정답!!</button>
+    </h1>
+    <h3 id="result"></h3>
+
+    <script>
+        let a = document.getElementById('a');
+        let printMsg = document.getElementById('printMsg');
+        let result = document.getElementById('result');
+        a = Math.floor((Math.random()*100)+1);
+        
+        function ran(){
+            
+            printMsg.innerHTML = (`랜덤으로 숫자를 생성하였습니다.`);
+            
+        }
+        function right(){
+            let myGuess = document.getElementById('myGuess').value;
+            
+            if(myGuess == a){
+                result.innerText=(`정답입니다~ 컴퓨터 숫자는 ${a}이었습니다.`);
+            }
+            
+            if(myGuess < a){
+                result.innerText=(`up`);
+            }else if(myGuess > a){
+                result.innerText=(`Down`);
+            }
+        }
+    </script>
+</body>
+</html>

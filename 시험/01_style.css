@@ -1,0 +1,154 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    margin: 0;
+    min-width: 900px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+ul{
+    list-style: none;
+
+}
+.navbar{
+    height: 60px;
+    padding: 10px 30px;
+    background-color: white;
+    /* border: 1px solid black; */
+}
+.navbar>a{
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    font-weight: 700;
+    font-size: 30px;
+}
+.navbar>ul{
+    padding: 0;
+    float: right;
+}
+.navbar>ul>li{
+    display: inline;
+    margin-left: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+.navbar>ul>li>a{
+    /* 글자모양 */
+    font-size: 13px;
+    font-weight: 700;
+}
+.header{
+    /* main-image */
+    width: 100%;
+    height: 400px;
+    background-image: url(image1/마멜.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    margin: 10px 0;
+}
+h1{
+    /* 중간 제목 */
+    margin: 60PX 0;
+    font-size: 30PX;
+    text-align: center;
+    color: rgba(128, 128, 128, 0.616);
+    font-weight: 700;
+}
+.products{
+    /* 그림 사이즈 640 마진 20 */
+    width: 940px;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    text-align: center;
+}
+.products>a{
+    display: block;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20PX;
+}
+.products>a:nth-child(3n){
+    /* display: block;
+    float: left; */
+    margin-right: 0px;
+}
+.products>a img{
+    width: 300px;
+    height: auto;
+} 
+.products ul{
+    padding: 0;
+    text-align: center;
+    margin: 20px auto 0;
+}
+.products ul li{
+    font-size: 16px;
+    width: 300px;
+    margin: 10px 0;
+}
+.footer{
+    clear: both;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(54, 46, 46);
+}
+.footer>i{
+    width: 40px;
+    font-size: 30px;
+    float: right;
+
+}
+.fa-instagram{
+    background: linear-gradient(to right, red, blue, purple); 
+}
+.fa-facebook{
+    color: blue;
+}
+.fa-twitter{
+    color: skyblue;
+}
+.box>a{
+    float: left;
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    font-weight: 700;
+    font-size: 15px;
+    display: inline;
+    margin-left: 10px;
+    margin-top: 10px;
+    font-family: "Gowun_Dodum";
+    /* src: url(/font/Gowun_Dodum.txt);   */
+}
+ .search-box{ 
+    height: 40px;
+    width: 260px;
+    border: 1px solid pink;
+    border-radius: 3px 3px 3px 3px;
+    margin: 5px;
+    float: right;
+    padding: 5px;
+}
+.input-box{
+    width: 80%;
+    height: 30px;  
+    float: left;
+    border: none;
+    outline: none;
+}
+.search1{
+    margin: 3px;
+    width: 11%;
+    height: 30px;
+    color: rgba(128, 125, 125, 0.397);
+    float: right;
+}

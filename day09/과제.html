@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습문제</title>
+</head>
+<body>
+    <button type="button"  onclick="game(0);">
+        <img src="/image/math_img_1.jpg" alt="">
+    </button>
+    <button type="button" onclick="game(1);" >
+        <img src="/image/math_img_2.jpg" alt="">
+    </button>
+    <button type="button" onclick="game(2);" >
+        <img src="/image/math_img_3.jpg" alt="">
+    </button>
+    <h4 id="result">
+
+    </h4>
+    <script>
+        let win = 0;
+        let draw = 0;
+        let lose = 0;
+        let count= 0;
+        function game(num){
+            count++;
+            let s='';
+            let sc='';
+            let mal='';
+            let com = Math.floor(Math.random()*3); // 컴퓨터가 낸 가위/바위/보 중 하나
+            
+            switch(num){
+                case 0:
+                    s="가위";
+                break;
+                case 1:
+                    s="바위";
+                break;
+                case 2:
+                    s="보";
+                break;
+            }
+
+            switch(com){
+                case 0:
+                    sc="가위";
+                break;
+                case 1:
+                    sc="바위";
+                break;
+                case 2:
+                    sc="보";
+                break;
+            }
+            // 0 가위 1 바위 2 보
+            
+            
+                if(num == com){
+                    draw++;
+                    mal="비겼습니다."
+                }else{
+                    switch(num){
+                        case 0: //가위
+                            if(com == 2){
+                                win++;
+                                mal="이겼습니다.";
+                            }else if(com == 1){
+                                lose++;
+                                mal="졌습니다.";
+                            }
+                        break;
+                        case 1: //바위
+                            if(com == 0){
+                                win++;
+                                mal="이겼습니다.";
+                            }else if(com == 2){
+                                lose++;
+                                mal="졌습니다.";
+                            }
+                        break;
+                        case 2: //보
+                            if(com == 1){
+                                win++;
+                                mal="이겼습니다.";
+                            }else if(com == 0){
+                                lose++;
+                                mal="졌습니다.";
+                            }
+                        break;
+                    }
+
+                }
+               
+                
+            
+            //승률계산
+            //(승리/(10-무))*100
+            let result = document.getElementById('result');
+            let sp = Math.floor((win/(count))*100);
+            result.innerHTML = (`당신 : ${s}<br>`);
+            result.innerHTML += (`컴퓨터 : ${sc}<br>`);
+            result.innerHTML += (`${mal}<br>`);
+            result.innerHTML += (`현재 전적<br>`);
+            result.innerHTML += (`승 : ${win}<br>`);
+            result.innerHTML += (`무 : ${draw}<br>`);
+            result.innerHTML += (`패 : ${lose}<br>`);
+            result.innerHTML +=(`승률 : ${sp}%<br>`); 
+        }
+    </script>
+</body>
+</html>

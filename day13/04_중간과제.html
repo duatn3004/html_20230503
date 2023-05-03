@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Titan+One&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-color: beige;
+        }
+
+        header>h1 {
+            font-size: 50px;
+            font-family: 'Titan One', cursive;
+            color: #8B4F1D;
+        }
+
+        header>p {
+            font-weight: 900;
+            margin-top: 50px;
+            color: #D7AC87;
+            font-family: 'Montserrat Alternates', sans-serif;
+        }
+        header{
+            text-align: center;
+        }
+
+
+        section>article {
+            float: left;
+            /* text-align: center; */
+            margin: 100px;
+
+        }
+
+        section {
+            margin-left: 15%;
+        }
+
+        section>article>h2 {
+            font-size: 30px;
+            font-family: 'Titan One', cursive;
+            color: #8B4F1D;
+        }
+        article>p, ul{
+            font-family: 'Montserrat Alternates', sans-serif;
+            color: #AE905E;
+        }
+   
+    </style>
+</head>
+
+<body>
+    <header>
+        <img src="/image/폼폼.png" alt="">
+    </header>
+
+    <section>
+
+    </section>
+
+    <script>
+        let header = document.querySelector('header');
+        let section = document.querySelector('section');
+        let str = '';
+
+
+        fetch('https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json')
+            .then(resp => resp.json())
+            .then(json => populateHeader(json))
+        //.then(json => showHeroes(json));
+        // populateHeader(json)
+
+        function populateHeader(jsonObj) {
+            console.log(jsonObj);
+            // str +=`<h1></h1>`
+            let myH1 = document.createElement('h1');
+            myH1.innerHTML = jsonObj['squadName'];
+            header.appendChild(myH1);
+
+            let myP = document.createElement('p');
+            myP.innerHTML = 'homeTown : ' + jsonObj['homeTown'] + '//Formed : ' + jsonObj['formed'];
+            header.appendChild(myP);
+            showHeroes(jsonObj);
+        }
+
+        function showHeroes(jsonObj) {
+            let heroes = jsonObj['members'];
+
+
+            for (const arr of heroes) {
+                let myArticle = document.createElement('article');
+                let myna = document.createElement('h2');
+                let myse = document.createElement('p');
+                let myage = document.createElement('p');
+                let mysuper = document.createElement('p');
+                let mypo = document.createElement('ul');
+                console.log(arr.name);
+                myna.innerHTML = arr['name'];
+                myse.innerHTML = 'Secret identity : '+arr['secretIdentity'];
+                myage.innerHTML ='Age :'+arr['age'];
+                mysuper.innerHTML = 'Superpowers :';
+                //arr['powers'];
+                let power = arr['powers'];
+                for (const pow of power) {
+                    console.log(pow);
+                    mypo.innerHTML += `<li>${pow}</li>`;
+                }
+
+
+
+                myArticle.appendChild(myna);
+                myArticle.appendChild(myse);
+                myArticle.appendChild(myage);
+                myArticle.appendChild(mysuper);
+                myArticle.appendChild(mypo);
+                section.appendChild(myArticle);
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>

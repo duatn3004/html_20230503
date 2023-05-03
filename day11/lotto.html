@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto 생성</title>
+    <!--  set을 이용(중복 자동 허용X) -->
+</head>
+
+<body>
+    <h1>1~45까지 중복되지 않는 숫자 6개를 랜덤으로 추출 => 출력
+        ( set 객체를 사용)
+    </h1>
+
+    <button type="button" id="userBtn">랜덤번호 6개 생성 및 출력</button>
+    <h1 id="printNum"></h1>
+
+    <button type="button" id="comBtn">당첨번호 7개 생성 및 출력 (마지막 번호는 보너스)</button>
+    <h1 id="printNum2"></h1>
+
+    <button type="button" id="result">결과 확인</button>
+    <h1 id="printResult"> </h1>
+    <!-- -등 당첨 출력 -->
+
+    <button type="button">다시하기</button>
+
+    <script>
+        let printNum = document.getElementById('printNum');
+        let printNum2 = document.getElementById('printNum2');
+        let printResult = document.getElementById('printResult');
+        let cnt = 0;
+
+        const userNumSet = new Set();
+        const comNumSet = new Set();
+
+        //유저번호 랜덤생성
+        document.getElementById('userBtn').addEventListener('click', function () {
+            let str = " ";
+            while (userNumSet.size < 6) {
+                userNumSet.add(Math.floor(Math.random() * 9) + 1);
+            }
+            for (const k of userNumSet.keys()) {
+                str += `${k}<br>`;
+            }
+
+            printNum.innerHTML = `랜덤 번호 : ${str}`;
+        })
+
+        //당첨번호 랜덤생성
+        document.getElementById('comBtn').addEventListener('click', function () {
+            let comstr = " ";
+            while (comNumSet.size < 7) {
+                comNumSet.add(Math.floor(Math.random() * 9) + 1);
+            }
+            for (const c of comNumSet.keys()) {
+                comstr += `${c}<br>`;
+            }
+
+            printNum2.innerHTML = `당첨 번호 : ${comstr}`;
+
+        })
+
+        //결과 확인
+        document.getElementById('result').addEventListener('click', function () {
+            let restr = " ";
+            let lastNum = false;
+
+            //배열로 변경(당첨번호)
+            let comNumArr = [];
+            comNumSet.forEach(function (keys) {
+                comNumArr.push(keys);
+            });
+
+            //보너스 번호 .pop : 마지막을 뽑음
+            let bonusNum = comNumArr.pop();
+            console.log(bonusNum);
+
+            //당첨번호set에서 마지막 보너스번호 제거
+            comNumSet.delete(bonusNum);
+
+            //비교
+            for (const n of userNumSet.keys()) {
+                if (comNumSet.has(n)) {
+                    cnt++;
+                }
+            }
+
+            //마지막 숫자 비교
+            for (const n of userNumSet.keys()) {
+                if (n == bonusNum) {
+                    lastNum = true;
+                }
+            }
+
+            //등수
+            switch (cnt) {
+                case 6:
+                    restr = '1등입니다';
+                    break;
+                case 5:
+                    if (lastNum == true) {
+                        restr = '2등입니다';
+                        break;
+                    } else {
+                        restr = '3등입니다';
+                        break;
+                    }
+                case 4:
+                    restr = '4등입니다';
+                    break;
+                case 3:
+                    restr = '5등입니다';
+                    break;
+                default: restr = '꽝';
+                    break;
+            }
+
+            printResult.innerText = restr;
+
+
+
+
+        })
+    </script>
+</body>
+
+</html>

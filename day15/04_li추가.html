@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="a">LI Tag 한번에 추가하기</button>
+    <button type="button" id="b" onclick="b1()">LI Tag 순차적 추가하기</button>
+    
+    <ul id="all">
+        
+    </ul>
+    <hr>
+    <ol id="sequential">
+
+    </ol>
+    <hr>
+
+    <script>
+        document.getElementById('a').addEventListener('click',()=>{
+            let all = document.getElementById('all');
+            const codeArr = ["HTML","CSS","JavaScrip","SQL"];
+            let value="";
+
+            for(const value of codeArr){
+                all.innerHTML+=`<li>${value}</li>`
+            }
+        })
+
+        let cnt =0;
+        function b1(){
+            const codeArr = ["HTML","CSS","JavaScrip","SQL"];
+            let sequential = document.getElementById('sequential');
+            console.log(codeArr[cnt]);
+            if(cnt < codeArr.length){
+                sequential.innerHTML += `<li>${codeArr[cnt]}</li>`
+                cnt++;
+            }
+        }
+    </script>
+</body>
+</html>

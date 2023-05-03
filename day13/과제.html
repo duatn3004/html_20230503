@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과제</title>
+</head>
+<body>
+    <h1>
+        <button type="button" id="starBtn" onclick="makeRandomDan()">문제출제</button>
+    </h1>
+    <ol id="q"></ol>
+    <h1>
+        <button type="button" id="compareBtn" onclick="j()">정답확인</button>
+    </h1>
+    <h3 id="printRatio"></h3>
+    
+    <script>
+        let result=[];
+        let str='';
+        let q = document.getElementById('q');
+        let printRatio = document.getElementById('printRatio');
+        function makeRandomDan(){
+            for(let i=0; i<10; i++){
+                let dan = Math.floor(Math.random()*8)+2; //2~9단까지 생성
+                let gu = Math.floor(Math.random()*9)+1 //1~9 값을 랜덤 생성
+                result[i]=dan*gu;
+                str += `<li>${dan}*${gu}=<input type="text" id="an${i}"></input></li>`;
+            }
+            q.innerHTML=str;
+        }
+        function j(){
+            let cnt=0;
+            for(let i=0; i<10; i++){
+                let an =Number(document.getElementById(`an${i}`).value);
+                if(result.includes(an)){
+                    cnt++;
+                }
+            }
+            let p = (cnt/10)*100;
+            printRatio.innerHTML=`정답률 : ${p}% <br> 정답갯수 : ${cnt}`;
+        }
+
+
+    </script>
+</body>
+</html>

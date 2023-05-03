@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과제</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            border: 5px solid black;
+            width: 8%;
+            height: 50px;
+            margin: 30px auto;
+
+        }
+
+        ul {
+            margin: 30px auto;
+        }
+
+        ul>li {
+            list-style: none;
+            display: inline;
+            margin: 0px 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            margin-top: 20px;
+            width: 700px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Travel</h1>
+    <ul>
+        <li><a href="#" onclick="home(0);">Home</a></li>
+        <li><a href="#" onclick="home(1);">Seoul</a></li>
+        <li><a href="#" onclick="home(2);">Tokyo</a></li>
+        <li><a href="#" onclick="home(3);">Paris</a></li>
+    </ul>
+    <img id="img"
+        src="/image/airplane.jpg"
+        alt="">
+    <script>
+        function home(num) {
+            switch (num) {
+                case 0:
+                    document.getElementById('img').src = "/image/airplane.jpg";
+                    break;
+                case 1:
+                    document.getElementById('img').src = "https://res.klook.com/image/upload/fl_lossy.progressive,w_800,c_fill,q_85/Mobile/City/uvtkchefj78cnu5cfzwy.jpg";
+                    break;
+                case 2:
+                    document.getElementById('img').src = "https://a.cdn-hotels.com/gdcs/production34/d497/b8255c6f-fbc1-4733-95e3-9b28deaac126.jpg";
+                    break;
+                case 3:
+                    document.getElementById('img').src = "https://cdn.pixabay.com/photo/2020/10/21/15/10/eiffel-tower-5673391__340.jpg";
+                    break;
+            }
+        }
+    </script>
+
+</body>
+
+</html>

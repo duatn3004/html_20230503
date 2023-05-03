@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <button type="button" value="7">7</button>
+            <button type="button" value="8">8</button>
+            <button type="button" value="9">9</button>
+            <button type="button" value="+">+</button>
+            <button type="button" value="C">C</button><br>
+            <button type="button" value="4">4</button>
+            <button type="button" value="5">5</button>
+            <button type="button" value="6">6</button>
+            <button type="button" value="-">-</button><br>
+            <button type="button" value="1">1</button>
+            <button type="button" value="2">2</button>
+            <button type="button" value="3">3</button>
+            <button type="button" value="*">*</button><br>
+            <button type="button" value=".">.</button>
+            <button type="button" value="0">0</button>
+            <button type="button" value="=" onclick="operator();">=</button>
+            <button type="button" value="/">/</button>
+        </div>
+        <h1 class="area bottom" id="printFomula"></h1>
+
+    </div>
+        <script>
+            // let printFomula = document.getElementById('printFomula');
+            // let calc = '';
+            // let btnVal2='';
+            // let numBtn = 0;
+
+            
+
+            // document.querySelector('.container').addEventListener('click',function(e){
+            //     let btnVal = e.target.value;
+            //     btnVal2=btnVal;
+            //     numBtn = Number(btnVal);
+            //     // console.log(Number(btnVal) === NaN);
+            //     //숫자
+            //     if(!isNaN(numBtn)){
+            //         console.log(typeof numBtn);
+            //         printFomula.innerText += numBtn;
+            //     }else{
+            //         console.log('xxx');
+            //         printFomula.innerText += btnVal2;
+            //     }
+            //     operator();
+            // });
+
+            // function operator(){
+                
+            //     switch(btnVal2){
+            //         case '+':
+            //             calc = numBtn+numBtn;
+            //             break;
+            //         case '-':
+            //             calc = numBtn-numBtn;
+            //             break;
+            //         case '*':
+            //             calc = numBtn*numBtn;
+            //             break;
+            //         case '/':
+            //             calc = numBtn/numBtn;
+            //             break;
+            
+            //     }
+            //     printFomula.innerText = calc;
+            // }
+
+            let printFomula = document.getElementById('printFomula');
+            let st = '';
+            let oper = '';
+            let calc = 0;
+            let num =0;
+            let str='';
+            document.querySelector('.container').addEventListener('click',function(e){
+                st = e.target.value;
+                // console.log(st);
+                // console.log(typeof st);
+                //숫자인것만 출력
+                //printFomula.innerHTML = st;
+                if(!isNaN(Number(st))){
+                    num = Number(st);
+                    console.log(num);
+                    console.log(typeof num);
+                    str += `${num}`;  //why???
+                }else{
+                    oper = st;
+                    console.log(oper);
+                    console.log(typeof oper);
+                    str += ` ${oper} `;
+                }
+                operator();
+                printFomula.innerHTML = str;
+            })
+
+            function operator(){
+                
+                    switch(oper){
+                        case '+':
+                            calc = num+num;
+                            break;
+                        case '-':
+                            calc = num-num;
+                            break;
+                        case '*':
+                            calc = num*num;
+                            break;
+                        case '/':
+                            calc = num/num;
+                            break;
+                
+                    }
+                    str += `${calc}`;
+                }
+        </script>
+</body>
+</html>

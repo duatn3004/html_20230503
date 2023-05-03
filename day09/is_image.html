@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        input 파일에 파일명, 확장자 입력하여 전송버튼을 누르면
+        이미지파일인지 검사하여 
+        이미지파일이면 '정상파일입니다.'
+        이미지 파일이 아니면 '이미지 파일만 가능합니다'
+        라고 출력하기
+        이미지파일 : jpg, png, jpeg, gif ...
+        - 대문자로 된 확장자명도 판단 가능해야 함.
+     -->
+    파일명 : <input type="text" id="fileName">
+    <button type="button" id="subBtn" onclick="send();">전송</button>
+    <h3 id="print">
+
+    </h3>
+    <script>
+        const fileList = ['jpg', 'png', 'jpeg', 'gif'];
+
+        function send() {
+            let fileName = document.getElementById('fileName').value;
+            let fileType = fileName.substr(fileName.indexOf(".") + 1).toLowerCase();
+            console.log(fileName.indexOf(".") + 1);
+            console.log(fileType);
+            // let subBtn = document.getElementById('subBtn');
+            let print = document.getElementById('print');
+
+            let flag = false;
+
+            // for(let i=0; i<fileList.length; i++){
+            //     if(fileList[i] == fileType){
+            //         flag=true;
+            //     }
+            // }
+
+            // if(flag){
+            //     print.innerText='정상파일입니다.'
+            // }else{
+            //     print.innerText='이미지 파일만 가능합니다.'
+            // }
+
+            for (let i = 0; i < fileList.length; i++) {
+                if (fileList[i] == fileType) {
+                    print.innerText = '정상파일입니다.'
+                    break;
+                } else {
+                    print.innerText = '이미지 파일만 가능합니다.'
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

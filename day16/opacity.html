@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: url(/image/back.png);
+        }
+        .bg,.front{
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% ,-50%);
+        }
+        .bg{
+            background-image: url(/image/main.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            z-index: 100;
+            animation-name: white;
+            animation-duration: 5s;
+            
+        }
+        .front{
+            opacity: 1;
+            background-color: #FF99CB;
+            font-size: 100px;
+            
+        }
+
+        @keyframes white {
+            from{
+                opacity: 1;
+            }
+            50%{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg"></div>
+    <div class="front"></div>
+</body>
+</html>
